@@ -122,19 +122,15 @@ function checkWinner(squares) {
     }
 
     for(let i = 0; i < 2; i++) {
-        for(let row = 0; row < 3; row++) {
-            for(let col = 0; col < 3; col++) {
-                let player = '-';
-                let streak = 0;
+        let player = '-';
+        let streak = 0;
 
-                for(let tempCol = col, tempRow = row; tempCol < 3 && tempRow < 3; i === 0 ? tempCol++ : tempCol--, tempRow++) {
-                    let value = squares[tempRow*3 + tempCol];
-                    streak = (value === null || player !== value) ? 1 : streak + 1;
+        for(let j = i === 0 ? 0 : 2; j < 9; j += 3 + (i === 0 ? 1 : -1)) {
+            let value = squares[j];
+            streak = (value === null || player !== value) ? 1 : streak + 1;
 
-                    player = value;
-                    if(streak === 3) return player;
-                }
-            }
+            player = value;
+            if(streak === 3) return player;
         }
     }
 

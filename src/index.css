@@ -40,8 +40,10 @@ ul {
   line-height: 2em;
   height: 2em;
   aspect-ratio: 1;
+  margin: 2px;
   padding: 0;
   text-align: center;
+  cursor: pointer;
 }
 
 .square:focus {
