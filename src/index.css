@@ -54,11 +54,6 @@ ul {
   background: #ddd;
 }
 
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
 .game-info {
   font-size: .75em;
   margin-left: 1.5em;
