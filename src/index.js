@@ -49,8 +49,10 @@ class Board extends React.Component {
         const winner = checkWinner(this.state.squares);
         let status;
         
-        if(winner) {
+        if(winner && winner !== 'D') {
             status = `Winner: ${winner}`;
+        } else if(winner === 'D') {
+            status = "Draw";
         } else {
             status = `Turn: ${this.state.turn}`;
         }
@@ -96,7 +98,7 @@ class Game extends React.Component {
 
 function checkWinner(squares) {
     for(let row = 0; row < 3; row++) {
-        let player = '-';
+        let player = null;
         let streak = 0;
 
         for(let col = 0; col < 3; col++) {
@@ -109,7 +111,7 @@ function checkWinner(squares) {
     }
 
     for(let col = 0; col < 3; col++) {
-        let player = '-';
+        let player = null;
         let streak = 0;
 
         for(let row = 0; row < 3; row++) {
@@ -122,7 +124,7 @@ function checkWinner(squares) {
     }
 
     for(let i = 0; i < 2; i++) {
-        let player = '-';
+        let player = null;
         let streak = 0;
 
         for(let j = i === 0 ? 0 : 2; j < (i === 0 ? 9 : 8); j += 3 + (i === 0 ? 1 : -1)) {
@@ -133,6 +135,8 @@ function checkWinner(squares) {
             if(streak === 3) return player;
         }
     }
+
+    if(squares.every(square => square != null)) return 'D';
 
     return null;
 }
