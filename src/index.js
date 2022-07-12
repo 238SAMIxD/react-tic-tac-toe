@@ -41,7 +41,7 @@ class Board extends React.Component {
 
         this.setState({
             squares,
-            turn: this.state.turn === 'X' ? 'Y' : 'X'
+            turn: this.state.turn === 'X' ? 'O' : 'X'
         });
     }
   
