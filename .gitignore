@@ -157,3 +157,4 @@ yarn-error.log*
 
 # vscode extensions configs
 .prettierrc
+.hintrc
