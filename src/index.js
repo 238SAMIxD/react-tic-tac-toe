@@ -8,7 +8,7 @@ function Square(props) {
             className="square"
             onClick={props.onClick}
         >
-            
+
         </button> 
     );
 }
@@ -16,8 +16,10 @@ function Square(props) {
 class Board extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            squares: Array(9).fill(null)
+            squares: Array(9).fill(null),
+            turn: 'X'
         };
     }
 
@@ -32,12 +34,17 @@ class Board extends React.Component {
 
     handleClick(i) {
         const squares = this.state.squares.slice();
-        squares[i] = 'X';
-        this.setState({squares});
+
+        squares[i] = this.state.turn;
+
+        this.setState({
+            squares,
+            turn: this.state.turn === 'X' ? 'Y' : 'X'
+        });
     }
   
     render() {
-        const status = 'Next player: X';
+        const status = `Next player: ${this.state.turn}`;
   
         return (
             <div>
