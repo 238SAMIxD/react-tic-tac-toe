@@ -125,7 +125,7 @@ function checkWinner(squares) {
         let player = '-';
         let streak = 0;
 
-        for(let j = i === 0 ? 0 : 2; j < 9; j += 3 + (i === 0 ? 1 : -1)) {
+        for(let j = i === 0 ? 0 : 2; j < (i === 0 ? 9 : 8); j += 3 + (i === 0 ? 1 : -1)) {
             let value = squares[j];
             streak = (value === null || player !== value) ? 1 : streak + 1;
 
