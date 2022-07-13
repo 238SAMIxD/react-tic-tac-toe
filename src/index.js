@@ -131,6 +131,9 @@ class Game extends React.Component {
             status = "Draw";
         } else {
             status = `Turn: ${this.state.turn}`;
+            document.querySelectorAll(".highlight").forEach(element => {
+                element.classList.remove("highlight");
+            });
         }
 
         return (
