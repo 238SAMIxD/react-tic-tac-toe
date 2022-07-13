@@ -78,6 +78,18 @@ class Game extends React.Component {
         const history = this.state.history;
         const current = history[history.length - 1];
         const winner = checkWinner(current.squares);
+        const moves = history.map((squares, move) => {
+            const desc = move ? `Jump to move #${move}` : "Restart game";
+
+            return (
+                <li>
+                    <button
+                        onClick={() => this.jumpTo(move)}>
+                        {desc}
+                    </button>
+                </li>
+            );
+        })
         let status;
         
         if(winner && winner !== 'D') {
@@ -98,7 +110,7 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{/* TODO */}</ol>
+                    <ol>{moves}</ol>
                 </div>
             </div>
         );
