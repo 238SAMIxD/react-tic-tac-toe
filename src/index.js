@@ -64,8 +64,22 @@ class Game extends React.Component {
                 squares: Array(9).fill(null)
             }],
             historyNumber: 0,
-            turn: 'X'
+            turn: 'X',
+            reversedMoves: true
         }
+    }
+
+    renderReverseButton() {
+        return (
+            <button 
+                className="reverse"
+                onClick={() => this.setState({
+                    reversedMoves: !this.state.reversedMoves
+                })}
+            >
+                Reverse order
+            </button> 
+        );
     }
 
     handleClick(i) {
@@ -108,7 +122,7 @@ class Game extends React.Component {
                     </button>
                 </li>
             );
-        })
+        });
         let status;
         
         if(winner && winner !== 'D') {
@@ -129,7 +143,8 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{moves}</ol>
+                    {this.renderReverseButton()}
+                    <ol>{this.state.reversedMoves ? moves.reverse() : moves}</ol>
                 </div>
             </div>
         );
