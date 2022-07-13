@@ -1,14 +1,11 @@
-html {
+html, body {
   overflow: hidden;
-}
-
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font-family: "Century Gothic", Futura, sans-serif;
 }
 
 ol,
 ul {
-  padding-left: 2em;
+  margin-block: .1em;
 }
 
 .game {
@@ -29,6 +26,29 @@ ul {
 .status {
   margin-bottom: .5rem;
   text-align: center;
+}
+
+.reverse {
+  background-color: hsl(220, 60%, 80%);
+  padding: .25em .5em;
+  font-size: .5em;
+  border-radius: .5em;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
+}
+
+.reverse:hover,
+.reverse:focus {
+  background-color: hsl(220, 50%, 70%);
+}
+
+.nav {
+  background-color: hsl(280, 70%, 90%);
+  padding: .25em .5em;
+  font-size: .45em;
+  border-radius: .25em;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
 }
 
 .square {
@@ -60,6 +80,10 @@ ul {
 }
 
 .game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   font-size: .75em;
   margin-left: 1.5em;
 }
