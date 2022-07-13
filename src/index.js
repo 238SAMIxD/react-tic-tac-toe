@@ -161,7 +161,12 @@ function checkWinner(squares) {
             streak = (value === null || player !== value) ? 1 : streak + 1;
 
             player = value;
-            if(streak === 3) return player;
+            
+            if(streak === 3) {
+                highlightSquares(row*3 + col, row*3, 1);
+
+                return player;
+            }
         }
     }
 
@@ -174,7 +179,11 @@ function checkWinner(squares) {
             streak = (value === null || player !== value) ? 1 : streak + 1;
 
             player = value;
-            if(streak === 3) return player;
+            if(streak === 3) {
+                highlightSquares(row*3 + col, 0, 3);
+
+                return player;
+            }
         }
     }
 
@@ -187,13 +196,23 @@ function checkWinner(squares) {
             streak = (value === null || player !== value) ? 1 : streak + 1;
 
             player = value;
-            if(streak === 3) return player;
+            if(streak === 3) {
+                highlightSquares(j, i === 0 ? 0 : 2, i === 0 ? 4 : 2);
+
+                return player;
+            }
         }
     }
 
     if(squares.every(square => square != null)) return 'D';
 
     return null;
+}
+
+function highlightSquares(start, condition, iteration) {
+    for(let sq = start; sq >= condition; sq -= iteration) {
+        document.querySelectorAll(".square")[sq].classList.add("highlight");
+    }
 }
   
 // ========================================

@@ -32,7 +32,7 @@ ul {
 }
 
 .square {
-  background: #fff;
+  background-color: #fff;
   border: 1px solid #999;
   float: left;
   font-size: 1em;
@@ -48,6 +48,10 @@ ul {
 
 .square:focus {
   outline: none;
+}
+
+.highlight {
+  background-color: #bbb;
 }
 
 .kbd-navigation .square:focus {
